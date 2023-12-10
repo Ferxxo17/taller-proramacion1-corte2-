@@ -1,0 +1,66 @@
+//taller programacion1 fernando_castillo
+#include <iostream>
+#include <string>
+using namespace std;
+
+//definicion de variables 
+const int NUM_ESTU = 20;
+const int NUM_CALIFI = 3;
+
+string nombres [NUM_ESTU];
+int cedulas [NUM_ESTU];
+int calificaciones [NUM_ESTU][NUM_CALIFI];
+float promedios [NUM_ESTU];
+
+void nomina_estudiantes() {
+    // nomina con cédula de los estudiantes
+    for (int i = 0; i < NUM_ESTU; i++) {
+        cout << "Por favor, ingrese la cédula del estudiante " << i+1 << ": ";
+        cin >> cedulas[i];
+    }
+}//fin nomina 
+
+    // notas de estudiantes
+void notas_estudiantes() {
+    for (int i = 0; i < NUM_ESTU; i++) {
+        cout << "Por favor, ingrese 3 calificaciones del estudiante " << nombres[i] << ": ";
+        for (int j = 0; j < NUM_CALIFI; j++) {
+            cin >> calificaciones[i][j];
+        }
+    }
+}//fin notas estudiantes
+
+     // promedio de notas
+void promedio_notas() {
+    for (int i = 0; i < NUM_ESTU; i++) {
+        float suma = 0;
+        for (int j = 0; j < NUM_CALIFI; j++) {
+            suma += calificaciones[i][j];
+        }
+        promedios[i] = suma / NUM_CALIFI;
+    }
+}//fin promedio notas
+
+    // tabla boletín de calificaciones
+void boletin_califi() {
+    cout << "Boletín de Calificaciones\n";
+    cout << "--------------------------------------------\n";
+    cout << "Cédula\t\tCalif1\tCalif2\tCalif3\tPromedio\n";
+    for (int i = 0; i < NUM_ESTU; i++) {
+        cout << cedulas[i] << "\t\t";
+        for (int j = 0; j < NUM_CALIFI; j++) {
+            cout << calificaciones[i][j] << "\t";
+        }
+        cout << promedios[i] << "\n";
+    }
+    cout << "--------------------------------------------\n";
+}//fin del boletin 
+
+//inicio de main
+int main() {
+    nomina_estudiantes();
+    notas_estudiantes();
+    promedio_notas();
+    boletin_califi();
+    return 0;
+}//fin del main
